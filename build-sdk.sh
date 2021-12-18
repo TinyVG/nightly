@@ -2,8 +2,8 @@
 
 set -e
 
-rm -rf sdk-release
-mkdir sdk-release
+rm -rf release
+mkdir release
 
 cp documents/sdk-readme.txt sdk-release/README.txt
 

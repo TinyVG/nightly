@@ -1,0 +1,72 @@
+name: Integration
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 5 * * *' # run at 5 AM UTC
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Fetch benchmark
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/benchmark'
+          path: 'src/benchmark'
+          submodules: 'recursive'
+
+      - name: Fetch examples
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/examples'
+          path: 'src/examples'
+          submodules: 'recursive'
+
+      - name: Fetch nightly
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/nightly'
+          path: 'src/nightly'
+          submodules: 'recursive'
+
+      - name: Fetch sdk
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/sdk'
+          path: 'src/sdk'
+          submodules: 'recursive'
+
+      - name: Fetch specification
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/specification'
+          path: 'src/specification'
+          submodules: 'recursive'
+
+      - name: Fetch website
+        uses: actions/checkout@v2
+        with:
+          repository: 'TinyVG/website'
+          path: 'src/website'
+          submodules: 'recursive'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install imagemagick p7zip-full npm texlive texlive-xetex pandoc librsvg2-bin
+
+      - name: Install dotnet sdk
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Setup Zig
+        uses: goto-bus-stop/setup-zig@v1
+        with:
+          version: master

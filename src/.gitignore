@@ -1,0 +1,8 @@
+# This folder will contain the original repositories, but we ignore them
+# so developers can check them out locally
+benchmark/
+examples/
+nightly/
+sdk/
+specification/
+website/

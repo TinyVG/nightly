@@ -25,6 +25,7 @@ mkdir -p "${PREFIX}/native/aarch64-linux/bin/"
 mkdir -p "${PREFIX}/native/aarch64-macos/bin/"
 
 cp src/sdk/docs/sdk-readme.txt "${PREFIX}/README.txt"
+cp src/sdk/docs/sdk-readme.txt "${WEBSITE}/download/tinyvg-sdk-readme"
 
 echo "Prepare examples..."
 mkdir -p ${PREFIX}/examples/{code,graphics}

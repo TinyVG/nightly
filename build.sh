@@ -79,6 +79,11 @@ cp src/specification/specification.pdf "${WEBSITE}/download/specification.pdf"
 cp src/specification/specification.txt "${WEBSITE}/download/specification.txt"
 cp src/specification/specification.md "${WEBSITE}/download/specification.md"
 
+echo "Render text format description"
+
+cat src/specification/text-format.md | sed -E "s/\`//g" | uniq > "${PREFIX}/text-format.txt"
+cat src/specification/text-format.md | sed -E "s/\`//g" | uniq > "${WEBSITE}/download/text-format.txt"
+
 echo "Build dotnet tooling"
 make -C src/sdk/src/tools/svg2tvgt/ "PREFIX=$(pwd)/build/native" install
 

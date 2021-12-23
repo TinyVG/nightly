@@ -69,7 +69,7 @@ jobs:
       - name: Setup Zig
         uses: goto-bus-stop/setup-zig@v1
         with:
-          version: 0.9.0
+          version: master
 
       - name: Build website and SDK
         run: |
